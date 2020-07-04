@@ -20,7 +20,7 @@ export const StyledHomeBody = styled.div`
   grid-gap: 10px;
 `
 
-function Home(products) {
+function Home(product) {
   // const { loading, error, data } = useQuery(GET_PRODUCTS, {
   //   variables: {
   //     input: {
@@ -32,10 +32,10 @@ function Home(products) {
   // if (error) return <h1>Error</h1>
   // if (loading) return <h1>Loading...</h1>
 
-  // const products = data?.getAllProduct?.data
-  // if (!products || !products.length) {
-  //   return <p>Not found</p>
-  // }
+  // const product = data?.getAllProduct?.data
+  if (!product || !product.length) {
+    return <p>Not found</p>
+  }
 
   return (
     <>
@@ -46,7 +46,7 @@ function Home(products) {
       <Header />
       <Layout>
         <StyledHomeBody>
-          {products.map((data) => (
+          {product.map((data) => (
             <Card
               key={data.id}
               imageURL={data.image}
