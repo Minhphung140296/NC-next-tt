@@ -20,22 +20,22 @@ export const StyledHomeBody = styled.div`
   grid-gap: 10px;
 `
 
-function Home() {
-  const { loading, error, data } = useQuery(GET_PRODUCTS, {
-    variables: {
-      input: {
-        page: 1,
-        keyword: 'Samsung',
-      },
-    },
-  })
-  if (error) return <h1>Error</h1>
-  if (loading) return <h1>Loading...</h1>
+function Home(products) {
+  // const { loading, error, data } = useQuery(GET_PRODUCTS, {
+  //   variables: {
+  //     input: {
+  //       page: 1,
+  //       keyword: 'Samsung',
+  //     },
+  //   },
+  // })
+  // if (error) return <h1>Error</h1>
+  // if (loading) return <h1>Loading...</h1>
 
-  const products = data?.getAllProduct?.data
-  if (!products || !products.length) {
-    return <p>Not found</p>
-  }
+  // const products = data?.getAllProduct?.data
+  // if (!products || !products.length) {
+  //   return <p>Not found</p>
+  // }
 
   return (
     <>
@@ -65,6 +65,19 @@ function Home() {
       <Footer />
     </>
   )
-}
 
-export default withApollo({ ssr: true })(Home)
+}
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts
+  const res = await fetch('https://min-shop.herokuapp.com/rest/product/4477805')
+  const product = await res.json()
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      product,
+    },
+  }
+}
+export default (Home)
