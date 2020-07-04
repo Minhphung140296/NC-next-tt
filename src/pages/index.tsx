@@ -18,7 +18,7 @@ export const StyledHomeBody = styled.div`
   position: relative;
   grid-template-columns: repeat(auto-fill, 220px);
   grid-gap: 10px;
-`
+`;
 
 function Home(product) {
   // const { loading, error, data } = useQuery(GET_PRODUCTS, {
@@ -33,9 +33,9 @@ function Home(product) {
   // if (loading) return <h1>Loading...</h1>
 
   // const product = data?.getAllProduct?.data
-  // if (!product || !product.length) {
-  //   return <p>Not found</p>
-  // }
+  if (!product || !product.length) {
+    return <p>Not found</p>
+  }
 
   return (
     <>
@@ -69,8 +69,8 @@ function Home(product) {
 }
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch('https://min-shop.herokuapp.com/rest/product/')
-  const product = await res.json()
+  const res = await fetch('https://min-shop.herokuapp.com/rest/product/');
+  const product = await res.json();
 
   // By returning { props: posts }, the Blog component
   // will receive `posts` as a prop at build time
