@@ -69,7 +69,7 @@ function Home(products) {
 }
 export async function getStaticProps() {
   // Call an external API endpoint to get posts
-  const res = await fetch('https://min-shop.herokuapp.com/rest/product/4477805')
+  const res = await fetch('https://min-shop.herokuapp.com/rest/product/')
   const product = await res.json()
 
   // By returning { props: posts }, the Blog component
