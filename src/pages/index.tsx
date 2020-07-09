@@ -34,9 +34,9 @@ function Home({products}) {
   // if (loading) return <h1>Loading...</h1>
 
   // const product = data?.getAllProduct?.data
-  if (!products || !products.length) {
-    return <p>Not found</p>
-  }
+  // if (!products || !products.length) {
+  //   return <p>Not found</p>
+  // }
 
   return (
     <>
@@ -47,7 +47,7 @@ function Home({products}) {
       <Header />
       <Layout>
         <StyledHomeBody>
-          {products.map((product) => (
+          {products?.map(({product}) => (
             <Card
               key={product.id}
               imageURL={product.image}
