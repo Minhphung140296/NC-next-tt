@@ -46,10 +46,10 @@ function Home({product}) {
       <Header />
       <Layout>
         <StyledHomeBody>
-          {product.map(({products}) => (
+          {product.map((product) => (
             <Card
-              key={products.id}
-              imageURL={products.image}
+              key={product.id}
+              imageURL={product.image}
               buttonGroups={
                 <>
                   <Button>View</Button>
@@ -57,7 +57,7 @@ function Home({product}) {
                 </>
               }
             >
-              {products.name}
+              {product.name}
             </Card>
           ))}
         </StyledHomeBody>
