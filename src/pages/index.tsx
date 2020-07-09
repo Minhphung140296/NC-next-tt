@@ -33,9 +33,9 @@ function Home({product}) {
   // if (loading) return <h1>Loading...</h1>
 
   // const product = data?.getAllProduct?.data
-  if (!product || !product.length) {
-    return <p>Not found</p>
-  }
+  // if (!product || !product.length) {
+  //   return <p>Not found</p>
+  // }
 
   return (
     <>
