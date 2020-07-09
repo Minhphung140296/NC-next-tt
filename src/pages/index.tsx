@@ -20,7 +20,20 @@ export const StyledHomeBody = styled.div`
   grid-gap: 10px;
 `;
 
-function Home({product}) {
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts
+  const res = await fetch('https://min-shop.herokuapp.com/rest/product');
+  const product = await res.json();
+
+  // By returning { props: posts }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      product,
+    },
+  }
+}
+function Home({products}) {
   // const { loading, error, data } = useQuery(GET_PRODUCTS, {
   //   variables: {
   //     input: {
@@ -46,7 +59,7 @@ function Home({product}) {
       <Header />
       <Layout>
         <StyledHomeBody>
-          {product.map((product) => (
+          {products.map((product) => (
             <Card
               key={product.id}
               imageURL={product.image}
@@ -65,19 +78,6 @@ function Home({product}) {
       <Footer />
     </>
   )
-
 }
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts
-  const res = await fetch('https://min-shop.herokuapp.com/rest/product');
-  const product = await res.json();
 
-  // By returning { props: posts }, the Blog component
-  // will receive `posts` as a prop at build time
-  return {
-    props: {
-      product,
-    },
-  }
-}
 export default Home;
