@@ -20,7 +20,7 @@ export const StyledHomeBody = styled.div`
   grid-gap: 10px;
 `;
 
-function Home(product) {
+function Home({product}) {
   // const { loading, error, data } = useQuery(GET_PRODUCTS, {
   //   variables: {
   //     input: {
