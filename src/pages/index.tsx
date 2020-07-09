@@ -46,7 +46,7 @@ function Home({product}) {
       <Header />
       <Layout>
         <StyledHomeBody>
-          {product.map((products) => (
+          {product.map(({products}) => (
             <Card
               key={products.id}
               imageURL={products.image}
