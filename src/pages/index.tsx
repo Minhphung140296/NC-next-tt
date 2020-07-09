@@ -80,4 +80,4 @@ export async function getStaticProps() {
     },
   }
 }
-export default Home
+export default Home;
